@@ -1,0 +1,70 @@
+<html>
+<head>
+    <title>
+    JS
+    </title>
+</head>
+
+<body>
+	<h1>Welcome to a game of rock paper scissors!</h1>
+	<h3>The rules are simple. Rock beats scissors, scissors beat paper, paper beats rock.</h3>
+	<p>To start the game, open the console using inspect element. (Shortcut: Ctrl + Shift + I)</p>
+    <script>
+    	var choice = ["rock", "paper", "scissors"];
+    	function computerPlay() {
+    		return rand = choice[Math.floor(Math.random() * choice.length)];
+    	}
+    	var playerSelection;
+    	var computerSelection = computerPlay();
+    	function playRound (playerSelection, computerSelection) {
+    		playerSelection = playerSelection.toLowerCase();
+    		if(playerSelection == "rock") {
+    			if(computerSelection == "rock")
+    				return "Draw";
+    			else if (computerSelection == "paper")
+    				return "you lose! Paper beats rock";
+    			else
+    				return "you win! rock beats scissors";
+    		} else if (playerSelection == "paper") {
+    			if(computerSelection == "rock")
+    				return "You win! paper beats rock";
+    			else if (computerSelection == "paper")
+    				return "Draw";
+    			else
+    				return "You lose! scissors beats paper";
+    		} else {
+    			if(computerSelection == "rock")
+    				return "You lose! rock beats scissors";
+    			else if (computerSelection == "paper")
+    				return "You win! scissors beats paper";
+    			else 
+    				return "Draw";
+    		}
+
+    	}
+    	function game() {
+    		console.log("The game begins!");
+    		for(var i = 1;i<=5;i++) {
+    			var check = 1;
+    			while(check == 1) {
+    				playerSelection = prompt("Enter your selection! Rock, Paper or Scissors.");
+    				if(playerSelection == "rock" || playerSelection == "paper" || playerSelection == "scissors")
+    					break;
+    				else {
+    					console.log("Enter a valid choice");
+    					playerSelection = prompt("Enter your selection! Rock, Paper or Scissors.");
+    				}
+    			}
+    			computerSelection = computerPlay();
+    			var win = playRound (playerSelection, computerSelection);
+    			console.log(win);
+    			if(i<5) {
+    				console.log("Round " + i + " complete! Time for next round.");
+    			} else {
+    				console.log("Round " + i + " complete! Game END!");
+    			}
+    		}
+    	}
+    </script>
+</body>
+</html>
